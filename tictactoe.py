@@ -5,23 +5,17 @@ UNIVERSITY OF CINCINNATI
 
 '''
 import os
-
 global p
-
 p = { "1": ' ' , "2" : ' ', "3" : ' ',"4" : ' ', "5" : ' ',"6" : ' ',"7" : ' ',"8" : ' ',"9": ' '}
 
-
-
-
-
-
+# clears the window.
 def clear_board():
     if os.name == 'nt': 
         _ = os.system('cls')
 
 
 
-
+#displays new boarded with selected values
 def print_game_board():
     line_1 = "   "+p["1"]+"   "+"|"+"   "+p["2"]+"   "+"|"+"   "+p["3"]+"   "
     line_2 = "   "+p["4"]+"   "+"|"+"   "+p["5"]+"   "+"|"+"   "+p["6"]+"   "
@@ -41,7 +35,7 @@ def print_game_board():
 
 
 
-
+#This function is used to check the status of game
 def check_game_status(a,b):
     if p["1"]+p["2"]+p["3"] == a+a+a or p["4"]+p["5"]+p["6"] == a+a+a or  p["7"]+p["8"]+p["9"] == a+a+a or  p["1"]+p["4"]+p["7"] == a+a+a or  p["2"]+p["5"]+p["8"] == a+a+a or  p["3"]+p["6"]+p["9"] == a+a+a or  p["1"]+p["5"]+p["9"] == a+a+a or  p["3"]+p["5"]+p["7"] == a+a+a:
         return True
@@ -50,7 +44,7 @@ def check_game_status(a,b):
 
 
 
-
+#This function allocates X or O values to the board
 def play_game(a,b):
     draw = 1 
     for i in range(1,10):
@@ -92,7 +86,7 @@ def play_game(a,b):
 
 
 
-
+#This function is to select players and their respective values (X,O)
 def player_selection(a,b):
     player1 = a
     player2 = b
@@ -108,7 +102,7 @@ def player_selection(a,b):
 
 
 
-
+#this function, we enter details of the players. 
 def enter_details():
     choosen = input("Player 1 please select X or O:  ")
     while True:
@@ -137,8 +131,8 @@ def main():
         if re != 'Y':
             break
 
-
-main()        
+if  __name__ == '__main__':
+    main()        
 
 
 
