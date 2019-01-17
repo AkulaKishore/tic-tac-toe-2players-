@@ -46,36 +46,54 @@ def check_game_status(a,b):
 
 #This function allocates X or O values to the board
 def play_game(a,b):
-    draw = 1 
-    for i in range(1,10):
-        if i%2 != 0:
-            i = input("Player 1 Choose a number:  ")
-            p[i] = a
-            print('\n')
-            print('\n')
-            clear_board()
-            print_game_board()
-            print('\n')
-            print('\n')
-            check = check_game_status(a,b)
-            if check == True:
-                draw = 0
-                print ("Player 1 Wins")
-                break;
-        else:
-            i = input("Player 2 Choose a number:  ")
-            p[i] = b
-            print('\n')
-            print('\n')
-            clear_board()
-            print_game_board()
-            print('\n')
-            print('\n')
-            check = check_game_status(a,b)
-            if check == True:
-                draw = 0
-                print ("Player 2 Wins")
-                break;
+    v = []
+    draw = 1
+    k = 1
+    while k < 10:
+        try:
+            if k%2 != 0:
+                i = input("Player 1 Choose a number:  ")
+                if int(i) >= 1 and int(i) <= 9 and int(i) not in v:
+                    v.append(int(i))
+                    p[i] = a
+                    print('\n')
+                    print('\n')
+                    clear_board()
+                    print_game_board()
+                    print('\n')
+                    print('\n')
+                    check = check_game_status(a,b)
+                    if check == True:
+                        draw = 0
+                        print ("Player 1 Wins")
+                        break;
+                    k +=1
+                else: raise Exception
+                            
+                            
+            else:
+                i = input("Player 2 Choose a number:  ")
+                if int(i) >= 1 and int(i) <= 9 and int(i) not in v:
+                    v.append(int(i))
+                    p[i] = b
+                    print('\n')
+                    print('\n')
+                    clear_board()
+                    print_game_board()
+                    print('\n')
+                    print('\n')
+                    check = check_game_status(a,b)
+                    if check == True:
+                        draw = 0
+                        print ("Player 2 Wins")
+                        break;
+                    k +=1
+                else: raise Exception
+        except:
+            print("You entered values other than 1-9 or you entered same value as before. please try again")
+                
+         
+			
     if draw == 1:
         print("---------Game Drawn---------------")
     re = input("Wanna play another game Y/N: ")
